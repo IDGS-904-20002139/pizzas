@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Terminar";
+}
+
+<div>
+    @if (ViewBag.ArchivoPizzas != null)
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tamaño</th>
+                    <th>Ingredientes</th>
+                    <th>Número de Pizzas</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (string tem in ViewBag.ArchivoPizzas)
+                {
+                    <tr>
+                        @foreach (string item in tem.Split(','))
+                        {
+                            <td>@item</td>
+                        }
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+
+</div>
+<div class="form-group">
+    @Html.ActionLink("Regresar", "Pedido", "Home", null,
+        new { dato = "", @class = "btn btn-outline-dark" })
+    @Html.ActionLink("Ir al inicio", "Index", "Home", null,
+        new { dato = "", @class = "btn btn-outline-dark" })
+</div>

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <div class="row">
+        <section class="text-center">
+            <h2>"Bienvenido al sistema para realizar pedidos"</h2>
+        </section>
+        <div class="form-group">
+            @Html.Label("Ir a realizar un pedido")
+            <br />
+            @Html.ActionLink("Realizar Pedido", "Pedido", "Home", null,
+                new { dato = "", @class = "btn btn-outline-dark" })
+        </div>
+    </div>
+</main>

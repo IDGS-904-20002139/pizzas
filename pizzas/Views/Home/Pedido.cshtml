@@ -1,0 +1,94 @@
+﻿@model pizzas.Models.Pizza
+
+@{
+    ViewBag.Title = "Pedido";
+}
+
+<h2>Pedido</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Pizza</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-5">
+        @Html.Label("Datos del comprador")
+        <div class="form-group">
+            @Html.Label("Nombre")
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Dirección")
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Teléfono")
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Fecha")
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Número de pizzas")
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.numPizzas, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.numPizzas, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    @Html.Label("Datos de la piza")
+    <div class="col-5">
+        <div class="form-group">
+            @Html.Label("Ingredientes")
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.ingrediente.Jamon)@Html.Label("Jamón")
+                <br />
+                @Html.CheckBoxFor(model => model.ingrediente.Pina)@Html.Label("Piña")
+                <br />
+                @Html.CheckBoxFor(model => model.ingrediente.Champinon)@Html.Label("Champiñones")
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.Label("Tipo de Pizza")
+            <br />
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => Model.tipoPizza, 1)@Html.Label("Chica $40")
+                <br />
+                @Html.RadioButtonFor(model => Model.tipoPizza, 2)@Html.Label("Mediana $80")
+                <br />
+                @Html.RadioButtonFor(model => Model.tipoPizza, 3)@Html.Label("Grande $120")
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-outline-dark" />
+                @Html.ActionLink("Terminar", "Terminar", "Home", null,
+                new { dato = "", @class = "btn btn-outline-dark" })
+            </div>
+        </div>
+    </div>
+</div>    
+}
+
